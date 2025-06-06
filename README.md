@@ -1,6 +1,6 @@
 # 👨🏻‍💻 Leonardo Garcia
 
-**`Estudante em Desenvolvimento FullStack Javascript`**
+**`Estudante em Análise e Desenvolvimento de Sistemas e FullStack Javascript`**
 
 Olá! Me chamo Leonardo Garcia de Oliveira, tenho 24 anos e sou natural de São Paulo. Atualmente, curso Análise e Desenvolvimento de Sistemas na UNINOVE e estou em formação como desenvolvedor Full Stack.
 
