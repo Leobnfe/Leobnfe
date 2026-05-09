@@ -49,9 +49,6 @@ Meu objetivo é atuar como desenvolvedor Full Stack, contribuindo em projetos de
 
 ### 📊 Estatísticas
 
-
-### 📊 Estatísticas
-
 <p>
   <img 
     align="left" 
