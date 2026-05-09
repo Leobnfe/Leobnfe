@@ -67,5 +67,5 @@ Meu objetivo é atuar como desenvolvedor Full Stack, contribuindo em projetos de
       height="160" 
       src="https://github-readme-stats.vercel.app/api/top-langs/?username=Leobnfe&theme=tokyonight&layout=compact&custom_title=Tecnologias&langs_count=9" 
   />
-
+</p>
 </p>
