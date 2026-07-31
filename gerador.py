@@ -35,7 +35,6 @@ def gerar_svg(linguagens):
     top_langs = sorted(linguagens.items(), key=lambda x: x[1], reverse=True)[:5]
     cores = {"HTML": "#E34F26", "CSS": "#1572B6", "JavaScript": "#F7DF1E", "Python": "#3776AB", "TypeScript": "#3178C6"}
     
-    # Textos atualizados e estilos para o novo alinhamento
     svg = '''<svg width="700" height="250" viewBox="0 0 700 250" xmlns="http://www.w3.org/2000/svg">
     <style>
         .bg { fill: #1a1b26; rx: 10px; }
@@ -43,12 +42,10 @@ def gerar_svg(linguagens):
         .subtitle { font: 14px 'Segoe UI', Arial, sans-serif; fill: #a9b1d6; }
         .text { font: 14px 'Segoe UI', Arial, sans-serif; fill: #a9b1d6; }
         .bar-bg { fill: #24283b; rx: 5px; }
-        /* A origem da rotação foi movida para a direita (530px) para girar o gráfico no lugar certo */
         .chart { transform: rotate(-90deg); transform-origin: 530px 140px; }
     </style>
     <rect width="100%" height="100%" class="bg"/>
     
-    <!-- Títulos Profissionais -->
     <text x="35" y="40" class="title">Análise do Repositório</text>
     <text x="35" y="60" class="subtitle">Percentual de código por linguagem.</text>
     '''
@@ -59,8 +56,8 @@ def gerar_svg(linguagens):
     svg += '<g class="chart">\n'
     offset_atual = 0
     
-    # As barras agora começam um pouco mais para baixo (y=90) por causa do subtítulo
-    y_pos = 90
+    # AQUI ESTÁ A MUDANÇA: Aumentamos de 90 para 105 para dar mais respiro
+    y_pos = 105 
     side_bars = ""
     
     for lang, bytes_count in top_langs:
@@ -71,19 +68,16 @@ def gerar_svg(linguagens):
         resto = circunferencia - tamanho_fatia
         dash_offset = -offset_atual
         
-        # O centro do gráfico circular (cx) foi movido para 530 (lado direito)
         svg += f'  <circle cx="530" cy="140" r="{raio}" fill="none" stroke="{cor}" stroke-width="35" stroke-dasharray="{tamanho_fatia} {resto}" stroke-dashoffset="{dash_offset}" />\n'
         
         offset_atual += tamanho_fatia
         
-        # As barras e textos foram movidos para a esquerda (x=35)
         side_bars += f'''
         <text x="35" y="{y_pos}" class="text">{lang}</text>
         <text x="315" y="{y_pos}" class="text">{porcentagem:.1f}%</text>
         <rect x="35" y="{y_pos + 10}" width="315" height="10" class="bar-bg"/>
         <rect x="35" y="{y_pos + 10}" width="{3.15 * porcentagem}" height="10" fill="{cor}" rx="5"/>
         '''
-        # Espaçamento entre as barras reduzido levemente para caber bem com o novo título
         y_pos += 31 
         
     svg += '</g>\n'
