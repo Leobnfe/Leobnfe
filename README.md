@@ -22,5 +22,7 @@ Meu objetivo é atuar como desenvolvedor Full Stack, contribuindo em projetos de
 ### 📊 Estatísticas
 
 <p align="left">
-  <img src="https://quickchart.io/chart?width=400&height=220&c={type:'doughnut',data:{labels:['HTML','CSS','JavaScript','Python'],datasets:[{data:[40,35,15,10],backgroundColor:['rgb(227,79,38)','rgb(21,114,182)','rgb(247,223,30)','rgb(55,118,171)']}]},options:{plugins:{legend:{position:'right',labels:{fontColor:'white'}}}}}&bkg=transparent" alt="Gráfico de Linguagens" />
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=html,css,js,git,github,vscode&theme=dark" alt="Minhas Tecnologias" />
+  </a>
 </p>
