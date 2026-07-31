@@ -9,7 +9,7 @@ Meu objetivo é atuar como desenvolvedor Full Stack, contribuindo em projetos de
 
 ---
 
-### 🤖 Linguagens e Tecnologias
+### 🤖 Linguagens 
 
 <p align="left">
   <a href="https://skillicons.dev">
@@ -18,6 +18,13 @@ Meu objetivo é atuar como desenvolvedor Full Stack, contribuindo em projetos de
 </p>
 
 <br/>
+
+### 🤖 Tecnologias
+<p align="left">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=html,css,js,git,github,vscode&theme=dark" alt="Minhas Tecnologias" />
+  </a>
+</p>
 
 ### 📊 Estatísticas
 
