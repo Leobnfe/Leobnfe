@@ -22,6 +22,5 @@ Meu objetivo é atuar como desenvolvedor Full Stack, contribuindo em projetos de
 ### 📊 Estatísticas
 
 <p align="left">
-  <img alt="GitHub Profile Details" height="160" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Leobnfe&theme=tokyonight" />
-  <img alt="GitHub Top Langs" height="160" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Leobnfe&theme=tokyonight" />
+  <img alt="Minhas Linguagens" src="./estatisticas.svg" />
 </p>
