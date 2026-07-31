@@ -2,18 +2,22 @@ name: Gerar Estatísticas
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Roda todo dia à meia-noite automaticamente
-  workflow_dispatch: # Adiciona um botão para você rodar manualmente quando quiser
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+# AQUI ESTÁ A SOLUÇÃO: Dando permissão para o bot salvar a imagem no repositório
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Baixar arquivos
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Atualizado para remover o aviso amarelo
 
       - name: Preparar Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5 # Atualizado para remover o aviso amarelo
         with:
           python-version: '3.10'
 
