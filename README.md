@@ -23,5 +23,6 @@ Meu objetivo é atuar como desenvolvedor Full Stack, contribuindo em projetos de
 ### 📊 Estatísticas
 
 <p align="left">
-  <img src="https://metrics.lecoq.io/Leobnfe?config.timezone=America%2FSao_Paulo" alt="Metrics" />
+  <img alt="GitHub Stats" height="160" src="https://github-readme-stats.vercel.app/api?username=Leobnfe&show_icons=true&theme=tokyonight&include_all_commits=true&locale=pt-br" />
+  <img alt="GitHub Top Langs" height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Leobnfe&theme=tokyonight&layout=compact&custom_title=Tecnologias&langs_count=9&hide=jupyter%20notebook,jupyter" />
 </p>
