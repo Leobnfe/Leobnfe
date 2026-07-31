@@ -1,30 +1,38 @@
-<svg width="320" height="230" viewBox="0 0 320 230" xmlns="http://www.w3.org/2000/svg">
+<svg width="700" height="250" viewBox="0 0 700 250" xmlns="http://www.w3.org/2000/svg">
     <style>
         .bg { fill: #1a1b26; rx: 10px; }
-        .title { font: bold 16px 'Segoe UI', Arial, sans-serif; fill: #c0caf5; }
-        .text { font: 13px 'Segoe UI', Arial, sans-serif; fill: #a9b1d6; }
+        .title { font: bold 18px 'Segoe UI', Arial, sans-serif; fill: #c0caf5; }
+        .text { font: 14px 'Segoe UI', Arial, sans-serif; fill: #a9b1d6; }
         .bar-bg { fill: #24283b; rx: 5px; }
+        /* Rotaciona o gráfico de pizza para a primeira fatia começar do topo */
+        .chart { transform: rotate(-90deg); transform-origin: 170px 140px; }
     </style>
     <rect width="100%" height="100%" class="bg"/>
-    <text x="25" y="35" class="title">Linguagens e Tecnologias</text>
-    
-        <text x="25" y="70" class="text">HTML</text>
-        <text x="260" y="70" class="text">63.9%</text>
-        <rect x="25" y="80" width="270" height="10" class="bar-bg"/>
-        <rect x="25" y="80" width="172.50616586167916" height="10" fill="#E34F26" rx="5"/>
+    <text x="35" y="40" class="title">Linguagens e Tecnologias</text>
+    <g class="chart">
+  <circle cx="170" cy="140" r="65" fill="none" stroke="#E34F26" stroke-width="35" stroke-dasharray="259.4540519233694 148.9529930433037" stroke-dashoffset="0" />
+  <circle cx="170" cy="140" r="65" fill="none" stroke="#1572B6" stroke-width="35" stroke-dasharray="112.15640125699446 296.2506437096786" stroke-dashoffset="-259.4540519233694" />
+  <circle cx="170" cy="140" r="65" fill="none" stroke="#F7DF1E" stroke-width="35" stroke-dasharray="25.233538418056863 383.1735065486162" stroke-dashoffset="-371.61045318036383" />
+  <circle cx="170" cy="140" r="65" fill="none" stroke="#7aa2f7" stroke-width="35" stroke-dasharray="11.563053368252351 396.84399159842076" stroke-dashoffset="-396.8439915984207" />
+</g>
+
+        <text x="350" y="60" class="text">HTML</text>
+        <text x="630" y="60" class="text">63.5%</text>
+        <rect x="350" y="70" width="315" height="10" class="bar-bg"/>
+        <rect x="350" y="70" width="200.11414436430826" height="10" fill="#E34F26" rx="5"/>
         
-        <text x="25" y="115" class="text">CSS</text>
-        <text x="260" y="115" class="text">27.6%</text>
-        <rect x="25" y="125" width="270" height="10" class="bar-bg"/>
-        <rect x="25" y="125" width="74.57070188058782" height="10" fill="#1572B6" rx="5"/>
+        <text x="350" y="98" class="text">CSS</text>
+        <text x="630" y="98" class="text">27.5%</text>
+        <rect x="350" y="108" width="315" height="10" class="bar-bg"/>
+        <rect x="350" y="108" width="86.50503665732847" height="10" fill="#1572B6" rx="5"/>
         
-        <text x="25" y="160" class="text">JavaScript</text>
-        <text x="260" y="160" class="text">6.2%</text>
-        <rect x="25" y="170" width="270" height="10" class="bar-bg"/>
-        <rect x="25" y="170" width="16.777309629020657" height="10" fill="#F7DF1E" rx="5"/>
+        <text x="350" y="136" class="text">JavaScript</text>
+        <text x="630" y="136" class="text">6.2%</text>
+        <rect x="350" y="146" width="315" height="10" class="bar-bg"/>
+        <rect x="350" y="146" width="19.462359182213746" height="10" fill="#F7DF1E" rx="5"/>
         
-        <text x="25" y="205" class="text">Python</text>
-        <text x="260" y="205" class="text">2.3%</text>
-        <rect x="25" y="215" width="270" height="10" class="bar-bg"/>
-        <rect x="25" y="215" width="6.145822628712363" height="10" fill="#3776AB" rx="5"/>
+        <text x="350" y="174" class="text">Python</text>
+        <text x="630" y="174" class="text">2.8%</text>
+        <rect x="350" y="184" width="315" height="10" class="bar-bg"/>
+        <rect x="350" y="184" width="8.91845979614949" height="10" fill="#7aa2f7" rx="5"/>
         </svg>
