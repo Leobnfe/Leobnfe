@@ -19,11 +19,11 @@ Meu objetivo é atuar como desenvolvedor Full Stack, contribuindo em projetos de
 
 <br/>
 
-### 🤖 Tecnologias
+### 🛠️ Tecnologias e Ferramentas
 <p align="left">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=html,css,js,git,github,vscode&theme=dark" alt="Minhas Tecnologias" />
-  </a>
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VSCode" />
 </p>
 
 ### 📊 Estatísticas
