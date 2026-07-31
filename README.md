@@ -28,5 +28,5 @@ Olá! Me chamo Leonardo Garcia, tenho 25 anos e sou natural de São Paulo. Sou f
 ### 📊 Estatísticas
 
 <p align="left">
-  <img alt="Minhas Linguagens" src="./estatisticas.svg?v=2" />
+  <img alt="Minhas Linguagens" src="./estatisticas.svg?v=3" />
 </p>
