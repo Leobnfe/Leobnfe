@@ -35,14 +35,16 @@ def gerar_svg(linguagens):
     top_langs = sorted(linguagens.items(), key=lambda x: x[1], reverse=True)[:5]
     cores = {"HTML": "#E34F26", "CSS": "#1572B6", "JavaScript": "#F7DF1E", "Python": "#3776AB", "TypeScript": "#3178C6"}
     
-    svg = '''<svg width="700" height="250" viewBox="0 0 700 250" xmlns="http://www.w3.org/2000/svg">
+    # 1. Altura aumentada para 280px para sobrar espaço
+    svg = '''<svg width="700" height="280" viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg">
     <style>
         .bg { fill: #1a1b26; rx: 10px; }
         .title { font: bold 18px 'Segoe UI', Arial, sans-serif; fill: #c0caf5; }
         .subtitle { font: 14px 'Segoe UI', Arial, sans-serif; fill: #a9b1d6; }
         .text { font: 14px 'Segoe UI', Arial, sans-serif; fill: #a9b1d6; }
         .bar-bg { fill: #24283b; rx: 5px; }
-        .chart { transform: rotate(-90deg); transform-origin: 530px 140px; }
+        /* Centro de rotação ajustado para a nova altura de 280px */
+        .chart { transform: rotate(-90deg); transform-origin: 530px 150px; }
     </style>
     <rect width="100%" height="100%" class="bg"/>
     
@@ -56,8 +58,8 @@ def gerar_svg(linguagens):
     svg += '<g class="chart">\n'
     offset_atual = 0
     
-    # AQUI ESTÁ A MUDANÇA: Aumentamos de 90 para 105 para dar mais respiro
-    y_pos = 105 
+    # 2. Ponto de início ajustado
+    y_pos = 100 
     side_bars = ""
     
     for lang, bytes_count in top_langs:
@@ -68,7 +70,8 @@ def gerar_svg(linguagens):
         resto = circunferencia - tamanho_fatia
         dash_offset = -offset_atual
         
-        svg += f'  <circle cx="530" cy="140" r="{raio}" fill="none" stroke="{cor}" stroke-width="35" stroke-dasharray="{tamanho_fatia} {resto}" stroke-dashoffset="{dash_offset}" />\n'
+        # 3. Posição Y da "pizza" também ajustada para acompanhar o centro
+        svg += f'  <circle cx="530" cy="150" r="{raio}" fill="none" stroke="{cor}" stroke-width="35" stroke-dasharray="{tamanho_fatia} {resto}" stroke-dashoffset="{dash_offset}" />\n'
         
         offset_atual += tamanho_fatia
         
@@ -78,7 +81,8 @@ def gerar_svg(linguagens):
         <rect x="35" y="{y_pos + 10}" width="315" height="10" class="bar-bg"/>
         <rect x="35" y="{y_pos + 10}" width="{3.15 * porcentagem}" height="10" fill="{cor}" rx="5"/>
         '''
-        y_pos += 31 
+        # 4. Devolvendo o espaçamento folgado de 38px
+        y_pos += 38 
         
     svg += '</g>\n'
     svg += side_bars
