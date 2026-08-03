@@ -33,7 +33,7 @@ def gerar_svg(linguagens):
     total_bytes = sum(linguagens.values())
     
     top_langs = sorted(linguagens.items(), key=lambda x: x[1], reverse=True)[:5]
-    cores = {"HTML": "#E34F26", "CSS": "#1572B6", "JavaScript": "#F7DF1E", "Python": "#3776AB", "TypeScript": "#3178C6"}
+    cores = {"HTML": "#E34F26", "CSS": "#1572B6", "JavaScript": "#F7DF1E", "Python": "#306998", "TypeScript": "#3178C6"}
     
     # 1. Altura aumentada para 280px para sobrar espaço
     svg = '''<svg width="700" height="280" viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg">
