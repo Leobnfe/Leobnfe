@@ -13,29 +13,29 @@
     <text x="35" y="40" class="title">Análise do Repositório</text>
     <text x="35" y="60" class="subtitle">Percentual de código por linguagem.</text>
     <g class="chart">
-  <circle cx="530" cy="150" r="65" fill="none" stroke="#E34F26" stroke-width="35" stroke-dasharray="258.3668042493691 150.04024071730396" stroke-dashoffset="0" />
-  <circle cx="530" cy="150" r="65" fill="none" stroke="#1572B6" stroke-width="35" stroke-dasharray="111.2376222011855 297.1694227654876" stroke-dashoffset="-258.3668042493691" />
-  <circle cx="530" cy="150" r="65" fill="none" stroke="#F7DF1E" stroke-width="35" stroke-dasharray="26.834166404924595 381.5728785617485" stroke-dashoffset="-369.6044264505546" />
-  <circle cx="530" cy="150" r="65" fill="none" stroke="#306998" stroke-width="35" stroke-dasharray="11.968452111193876 396.4385928554792" stroke-dashoffset="-396.4385928554792" />
+  <circle cx="530" cy="150" r="65" fill="none" stroke="#E34F26" stroke-width="35" stroke-dasharray="242.4529982705427 165.95404669613038" stroke-dashoffset="0" />
+  <circle cx="530" cy="150" r="65" fill="none" stroke="#1572B6" stroke-width="35" stroke-dasharray="103.96829697540552 304.4387479912676" stroke-dashoffset="-242.4529982705427" />
+  <circle cx="530" cy="150" r="65" fill="none" stroke="#F7DF1E" stroke-width="35" stroke-dasharray="50.79943021110788 357.6076147555652" stroke-dashoffset="-346.4212952459482" />
+  <circle cx="530" cy="150" r="65" fill="none" stroke="#306998" stroke-width="35" stroke-dasharray="11.186319509616977 397.2207254570561" stroke-dashoffset="-397.2207254570561" />
 </g>
 
         <text x="35" y="100" class="text">HTML</text>
-        <text x="315" y="100" class="text">63.3%</text>
+        <text x="315" y="100" class="text">59.4%</text>
         <rect x="35" y="110" width="315" height="10" class="bar-bg"/>
-        <rect x="35" y="110" width="199.27556182384785" height="10" fill="#E34F26" rx="5"/>
+        <rect x="35" y="110" width="187.00141291992927" height="10" fill="#E34F26" rx="5"/>
         
         <text x="35" y="138" class="text">CSS</text>
-        <text x="315" y="138" class="text">27.2%</text>
+        <text x="315" y="138" class="text">25.5%</text>
         <rect x="35" y="148" width="315" height="10" class="bar-bg"/>
-        <rect x="35" y="148" width="85.79639216613602" height="10" fill="#1572B6" rx="5"/>
+        <rect x="35" y="148" width="80.18963911341248" height="10" fill="#1572B6" rx="5"/>
         
         <text x="35" y="176" class="text">JavaScript</text>
-        <text x="315" y="176" class="text">6.6%</text>
+        <text x="315" y="176" class="text">12.4%</text>
         <rect x="35" y="186" width="315" height="10" class="bar-bg"/>
-        <rect x="35" y="186" width="20.69690648514893" height="10" fill="#F7DF1E" rx="5"/>
+        <rect x="35" y="186" width="39.18105897954029" height="10" fill="#F7DF1E" rx="5"/>
         
         <text x="35" y="214" class="text">Python</text>
-        <text x="315" y="214" class="text">2.9%</text>
+        <text x="315" y="214" class="text">2.7%</text>
         <rect x="35" y="224" width="315" height="10" class="bar-bg"/>
-        <rect x="35" y="224" width="9.231139524867197" height="10" fill="#306998" rx="5"/>
+        <rect x="35" y="224" width="8.62788898711796" height="10" fill="#306998" rx="5"/>
         </svg>
