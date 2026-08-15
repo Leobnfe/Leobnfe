@@ -14,8 +14,6 @@ Olá! Me chamo Leonardo Garcia, tenho 25 anos e sou natural de São Paulo. Sou f
   </a>
 </p>
 
-<br>
-
 ### 🛠️ Ferramentas
 <p align="left">
   <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
