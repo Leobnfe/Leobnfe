@@ -10,7 +10,7 @@ Olá! Me chamo Leonardo Garcia, tenho 25 anos e sou natural de São Paulo. Sou f
 
 <p align="left">
   <a href="https://skillicons.dev">
-    <img height="40" src="https://skillicons.dev/icons?i=html,css,js&theme=dark" alt="Linguagens" />
+    <img height="40" src="https://skillicons.dev/icons?i=html,css,js,python&theme=dark" alt="Linguagens" />
   </a>
 </p>
 
