@@ -1,12 +1,7 @@
 # 👨🏻‍💻 Leonardo Garcia
 
-``Software Engineer | Full Stack JavaScript | AWS Cloud | Automation & AI``
 
- Software Engineer com atuação em desenvolvimento Full Stack, automações e soluções integradas com Inteligência Artificial.
 
-Experiência com JavaScript, TypeScript, React, Next.js, Node.js, APIs REST, SQL/NoSQL e Cloud Computing, desenvolvendo aplicações web, APIs, integrações, automações e soluções com IA.
-
-Formação em Análise e Desenvolvimento de Sistemas, atualmente expandindo conhecimentos em AWS Cloud através do programa AWS re/Start e cursando Ciência da Computação.
 
 ---
 
