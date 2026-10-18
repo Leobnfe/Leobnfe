@@ -19,6 +19,7 @@ def obter_dados_linguagens():
             "GH_TOKEN ausente. Configure um token com acesso aos repositórios no GitHub Actions."
         )
 
+
     url = "https://api.github.com/user/repos"
     params = {"visibility": "all", "affiliation": "owner", "per_page": 100}
     linguagens = {}
@@ -56,7 +57,6 @@ def obter_dados_linguagens():
                 if isinstance(bytes_count, int) and bytes_count > 0:
                     linguagens[lang] = linguagens.get(lang, 0) + bytes_count
 
-       
         url = response.links.get("next", {}).get("url")
         params = None
 
