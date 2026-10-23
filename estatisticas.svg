@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="700" height="174"
     viewBox="0 0 700 174" role="img" aria-label="Estatísticas de linguagens do GitHub">
-  <title>Distribuição de código por linguagem — 4 linguagens</title>
+  <title>Distribuição de código por linguagem — 5 linguagens</title>
   <style>
     .title { font: 600 17px 'Segoe UI', Arial, sans-serif; fill: #c0caf5; }
     .subtitle { font: 12px 'Segoe UI', Arial, sans-serif; fill: #a9b1d6; }
@@ -9,25 +9,29 @@
   </style>
   <rect width="700" height="174" rx="12" fill="#1a1b26"/>
   <text x="32" y="35" class="title">Análise do Repositório</text>
-  <text x="32" y="55" class="subtitle">Percentual de código por linguagem · 4 linguagens</text>
+  <text x="32" y="55" class="subtitle">Percentual de código por linguagem · 5 linguagens</text>
   <defs><clipPath id="barra-arredondada"><rect x="32" y="74" width="636" height="12" rx="6"/></clipPath></defs>
   <rect x="32" y="74" width="636" height="12" rx="6" fill="#24283b"/>
   <g clip-path="url(#barra-arredondada)">
-    <rect x="32.00000" y="74" width="380.21746" height="12" fill="#E34F26"/>
-    <rect x="412.21746" y="74" width="155.98937" height="12" fill="#1572B6"/>
-    <rect x="568.20683" y="74" width="60.52409" height="12" fill="#F7DF1E"/>
-    <rect x="628.73092" y="74" width="39.26908" height="12" fill="#4CC38A"/>
+    <rect x="32.00000" y="74" width="246.99322" height="12" fill="#E34F26"/>
+    <rect x="278.99322" y="74" width="170.36193" height="12" fill="#4CC38A"/>
+    <rect x="449.35515" y="74" width="155.36129" height="12" fill="#1572B6"/>
+    <rect x="604.71644" y="74" width="61.93349" height="12" fill="#F7DF1E"/>
+    <rect x="666.64993" y="74" width="1.35007" height="12" fill="#CDCB4D"/>
   </g>
   <rect x="32.00" y="113.00" width="8" height="8" rx="2" fill="#E34F26"/>
   <text x="48.00" y="122.00" class="name">HTML</text>
-  <text x="234.00" y="122.00" text-anchor="end" class="pct">59.8%</text>
-  <rect x="244.00" y="113.00" width="8" height="8" rx="2" fill="#1572B6"/>
-  <text x="260.00" y="122.00" class="name">CSS</text>
-  <text x="446.00" y="122.00" text-anchor="end" class="pct">24.5%</text>
-  <rect x="456.00" y="113.00" width="8" height="8" rx="2" fill="#F7DF1E"/>
-  <text x="472.00" y="122.00" class="name">JavaScript</text>
-  <text x="658.00" y="122.00" text-anchor="end" class="pct">9.5%</text>
-  <rect x="32.00" y="139.00" width="8" height="8" rx="2" fill="#4CC38A"/>
-  <text x="48.00" y="148.00" class="name">Python</text>
-  <text x="234.00" y="148.00" text-anchor="end" class="pct">6.2%</text>
+  <text x="234.00" y="122.00" text-anchor="end" class="pct">38.8%</text>
+  <rect x="244.00" y="113.00" width="8" height="8" rx="2" fill="#4CC38A"/>
+  <text x="260.00" y="122.00" class="name">Python</text>
+  <text x="446.00" y="122.00" text-anchor="end" class="pct">26.8%</text>
+  <rect x="456.00" y="113.00" width="8" height="8" rx="2" fill="#1572B6"/>
+  <text x="472.00" y="122.00" class="name">CSS</text>
+  <text x="658.00" y="122.00" text-anchor="end" class="pct">24.4%</text>
+  <rect x="32.00" y="139.00" width="8" height="8" rx="2" fill="#F7DF1E"/>
+  <text x="48.00" y="148.00" class="name">JavaScript</text>
+  <text x="234.00" y="148.00" text-anchor="end" class="pct">9.7%</text>
+  <rect x="244.00" y="139.00" width="8" height="8" rx="2" fill="#CDCB4D"/>
+  <text x="260.00" y="148.00" class="name">Batchfile</text>
+  <text x="446.00" y="148.00" text-anchor="end" class="pct">0.21%</text>
 </svg>
