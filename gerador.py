@@ -2,7 +2,7 @@ import colorsys
 import hashlib
 import math
 import os
-from pathlib import 
+from pathlib import path
 from xml.sax.saxutils import escape
 
 import requests
