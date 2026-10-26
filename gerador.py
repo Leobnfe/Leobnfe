@@ -1,4 +1,3 @@
-
 import colorsys
 import hashlib
 import math
@@ -7,7 +6,6 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 import requests
-
 
 # ==========================================
 # CONFIGURAÇÕES
@@ -24,7 +22,6 @@ HEADERS = {
 
 if TOKEN:
     HEADERS["Authorization"] = f"Bearer {TOKEN}"
-
 
 # ==========================================
 # CORES DAS LINGUAGENS
@@ -60,13 +57,11 @@ COLORS = {
     "Batchfile": "#A3A300",
 }
 
-
 # ==========================================
 # CONSULTAR REPOSITÓRIOS DO GITHUB
 # ==========================================
 
 def obter_dados_linguagens():
-
     if not TOKEN:
         raise RuntimeError(
             "GH_TOKEN ausente. Confira o Secret no GitHub Actions."
@@ -77,7 +72,6 @@ def obter_dados_linguagens():
     privados = 0
 
     url = "https://api.github.com/user/repos"
-
     params = {
         "visibility": "all",
         "affiliation": "owner",
@@ -85,17 +79,10 @@ def obter_dados_linguagens():
     }
 
     with requests.Session() as session:
-
         session.headers.update(HEADERS)
 
         while url:
-
-            resposta = session.get(
-                url,
-                params=params,
-                timeout=30,
-            )
-
+            resposta = session.get(url, params=params, timeout=30)
             resposta.raise_for_status()
             repositorios = resposta.json()
 
@@ -105,12 +92,10 @@ def obter_dados_linguagens():
                 )
 
             for repo in repositorios:
-
                 if repo.get("fork"):
                     continue
 
                 language_url = repo.get("languages_url")
-
                 if not language_url:
                     continue
 
@@ -118,7 +103,6 @@ def obter_dados_linguagens():
                     language_url,
                     timeout=30,
                 )
-
                 resposta_linguagens.raise_for_status()
                 linguagens_repo = resposta_linguagens.json()
 
@@ -133,12 +117,8 @@ def obter_dados_linguagens():
                     publicos += 1
 
                 for linguagem, bytes_codigo in linguagens_repo.items():
-
                     if isinstance(bytes_codigo, int) and bytes_codigo > 0:
-
-                        totais[linguagem] = (
-                            totais.get(linguagem, 0) + bytes_codigo
-                        )
+                        totais[linguagem] = totais.get(linguagem, 0) + bytes_codigo
 
             url = resposta.links.get("next", {}).get("url")
             params = None
@@ -150,69 +130,45 @@ def obter_dados_linguagens():
 
     return totais
 
-
 # ==========================================
-# DEFINIR CORES AUTOMÁTICAS
+# COR AUTOMÁTICA PARA LINGUAGENS NÃO MAPEADAS
 # ==========================================
 
 def cor_linguagem(nome):
-
     if nome in COLORS:
         return COLORS[nome]
 
-    digest = hashlib.sha256(
-        nome.encode("utf-8")
-    ).digest()
-
-    hue = int.from_bytes(
-        digest[:2], "big"
-    ) / 65535
-
+    digest = hashlib.sha256(nome.encode("utf-8")).digest()
+    hue = int.from_bytes(digest[:2], "big") / 65535
     saturation = 0.45 + (digest[2] / 255) * 0.20
     value = 0.75 + (digest[3] / 255) * 0.15
 
-    rgb = colorsys.hsv_to_rgb(
-        hue,
-        saturation,
-        value,
-    )
-
-    return "#" + "".join(
-        f"{round(c * 255):02X}" for c in rgb
-    )
-
+    rgb = colorsys.hsv_to_rgb(hue, saturation, value)
+    return "#" + "".join(f"{round(c * 255):02X}" for c in rgb)
 
 # ==========================================
 # FORMATAR PERCENTUAIS
 # ==========================================
 
 def percentual_formatado(valor):
-
     if valor < 0.01:
         return "&lt;0.01%"
-
     if valor < 1:
         return f"{valor:.2f}%"
-
     return f"{valor:.1f}%"
 
-
 # ==========================================
-# GERAR GRÁFICO SVG
+# GERAR SVG
 # ==========================================
 
 def gerar_svg(linguagens, arquivo=OUTPUT):
-
     itens = sorted(
         [
             (nome, qtd)
             for nome, qtd in linguagens.items()
             if isinstance(qtd, int) and qtd > 0
         ],
-        key=lambda item: (
-            -item[1],
-            item[0].casefold()
-        ),
+        key=lambda item: (-item[1], item[0].casefold()),
     )
 
     if not itens:
@@ -224,27 +180,39 @@ def gerar_svg(linguagens, arquivo=OUTPUT):
 
     # Dimensões do card
     largura = 700
+    altura_minima = 180
 
-    colunas = (
-        3 if max(len(nome) for nome, _ in itens) <= 19
-        else 2
-    )
-
+    # Layout
+    colunas = 3 if max(len(nome) for nome, _ in itens) <= 19 else 2
     linhas = math.ceil(len(itens) / colunas)
 
-    largura_coluna = 636 / colunas
+    # Card principal
+    card_x = 10
+    card_y = 10
+    card_w = 680
+    card_rx = 14
 
+    # Texto
+    titulo_x = 36
+    titulo_y = 42
+    subtitulo_y = 62
+
+    # Barra (corrigida para ir mais até o fim)
+    barra_x = 36
+    barra_y = 82
+    barra_h = 14
+    barra_rx = 7
+    barra_w = 624  # antes estava 608
+
+    # Legenda
+    largura_coluna = 636 / colunas
     inicio_legenda = 128
     passo = 28
 
     altura = max(
-        180,
+        altura_minima,
         inicio_legenda + (linhas - 1) * passo + 30
     )
-
-    # ======================================
-    # ESTRUTURA VISUAL
-    # ======================================
 
     partes = [f'''<svg xmlns="http://www.w3.org/2000/svg"
     width="{largura}"
@@ -279,93 +247,67 @@ def gerar_svg(linguagens, arquivo=OUTPUT):
 
   <!-- Fundo do card -->
   <rect
-    x="10"
-    y="10"
-    width="680"
+    x="{card_x}"
+    y="{card_y}"
+    width="{card_w}"
     height="{altura - 20}"
-    rx="14"
+    rx="{card_rx}"
     fill="#0d1117"
     stroke="#30363d"
     stroke-width="1"
   />
 
   <!-- Título -->
-  <text x="36" y="42" class="title">
+  <text x="{titulo_x}" y="{titulo_y}" class="title">
     Análise do Repositório
   </text>
 
   <!-- Subtítulo -->
-  <text x="36" y="62" class="subtitle">
+  <text x="{titulo_x}" y="{subtitulo_y}" class="subtitle">
     Percentual de código por linguagem · {len(itens)} linguagens
   </text>
 
-  <!-- Barra arredondada -->
+  <!-- Clip da barra -->
   <defs>
     <clipPath id="barra-arredondada">
       <rect
-        x="36"
-        y="82"
-        width="608"
-        height="14"
-        rx="7"
+        x="{barra_x}"
+        y="{barra_y}"
+        width="{barra_w}"
+        height="{barra_h}"
+        rx="{barra_rx}"
       />
     </clipPath>
   </defs>
 
   <!-- Fundo da barra -->
   <rect
-    x="36"
-    y="82"
-    width="608"
-    height="14"
-    rx="7"
+    x="{barra_x}"
+    y="{barra_y}"
+    width="{barra_w}"
+    height="{barra_h}"
+    rx="{barra_rx}"
     fill="#21262d"
   />
 
   <g clip-path="url(#barra-arredondada)">''']
 
-    # ======================================
-    # BARRA DE LINGUAGENS
-    # ======================================
+    # Barra das linguagens
+    atual = float(barra_x)
 
-    largura_barra = 608.0
-    inicio_barra = 36.0
-    atual = inicio_barra
+    for idx, (nome, qtd) in enumerate(itens):
+        tamanho = barra_w * qtd / total
 
-    # Linguagens com menos de 1% aparecem
-    # na legenda, mas não na barra.
-    itens_barra = [
-        (nome, qtd)
-        for nome, qtd in itens
-        if (qtd / total * 100) >= 1
-    ]
-
-    # Caso todas estejam abaixo de 1%,
-    # mantém todas as linguagens na barra.
-    if not itens_barra:
-        itens_barra = itens
-
-    total_barra = sum(
-        qtd for _, qtd in itens_barra
-    )
-
-    for idx, (nome, qtd) in enumerate(itens_barra):
-
-        tamanho = largura_barra * qtd / total_barra
-
-        # Última linguagem ocupa exatamente
-        # o espaço restante da barra.
-        if idx == len(itens_barra) - 1:
-            tamanho = (
-                inicio_barra + largura_barra
-            ) - atual
+        # Faz a última faixa fechar exatamente no final
+        if idx == len(itens) - 1:
+            tamanho = (barra_x + barra_w) - atual
 
         partes.append(
             f'  <rect '
             f'x="{atual:.5f}" '
-            f'y="82" '
+            f'y="{barra_y}" '
             f'width="{tamanho:.5f}" '
-            f'height="14" '
+            f'height="{barra_h}" '
             f'fill="{cor_linguagem(nome)}"/>'
         )
 
@@ -373,12 +315,8 @@ def gerar_svg(linguagens, arquivo=OUTPUT):
 
     partes.append("  </g>")
 
-    # ======================================
-    # LEGENDA - TODAS AS LINGUAGENS
-    # ======================================
-
+    # Legenda com TODAS as linguagens
     for i, (nome, qtd) in enumerate(itens):
-
         coluna = i % colunas
         linha = i // colunas
 
@@ -386,7 +324,6 @@ def gerar_svg(linguagens, arquivo=OUTPUT):
         y = inicio_legenda + passo * linha
 
         pct = qtd / total * 100
-
         nome_xml = escape(nome)
 
         partes.extend([
@@ -414,33 +351,18 @@ def gerar_svg(linguagens, arquivo=OUTPUT):
             ),
         ])
 
-    # ======================================
-    # FINALIZAR SVG
-    # ======================================
-
     partes.append("</svg>")
 
     caminho = Path(arquivo)
-
-    caminho.write_text(
-        "\n".join(partes),
-        encoding="utf-8",
-    )
+    caminho.write_text("\n".join(partes), encoding="utf-8")
 
     print(
         f"Linguagens exibidas: {len(itens)} (todas). "
         f"SVG: {largura}x{altura}px."
     )
-
     print("Gráfico SVG gerado com sucesso!")
 
 
-# ==========================================
-# EXECUÇÃO PRINCIPAL
-# ==========================================
-
 if __name__ == "__main__":
-
     dados = obter_dados_linguagens()
-
     gerar_svg(dados)
