@@ -51,13 +51,13 @@
     Percentual de código por linguagem · 5 linguagens
   </text>
 
-  <!-- Barra arredondada -->
+  <!-- Clip da barra -->
   <defs>
     <clipPath id="barra-arredondada">
       <rect
         x="36"
         y="82"
-        width="608"
+        width="624"
         height="14"
         rx="7"
       />
@@ -68,17 +68,18 @@
   <rect
     x="36"
     y="82"
-    width="608"
+    width="624"
     height="14"
     rx="7"
     fill="#21262d"
   />
 
   <g clip-path="url(#barra-arredondada)">
-  <rect x="36.00000" y="82" width="235.91949" height="14" fill="#FF6B35"/>
-  <rect x="271.91949" y="82" width="164.52795" height="14" fill="#4ADE80"/>
-  <rect x="436.44745" y="82" width="148.39580" height="14" fill="#3B82F6"/>
-  <rect x="584.84325" y="82" width="59.15675" height="14" fill="#FACC15"/>
+  <rect x="36.00000" y="82" width="241.78282" height="14" fill="#FF6B35"/>
+  <rect x="277.78282" y="82" width="168.18471" height="14" fill="#4ADE80"/>
+  <rect x="445.96753" y="82" width="152.08390" height="14" fill="#3B82F6"/>
+  <rect x="598.05143" y="82" width="60.62698" height="14" fill="#FACC15"/>
+  <rect x="658.67841" y="82" width="1.32159" height="14" fill="#A3A300"/>
   </g>
   <rect x="36.00" y="118.00" width="9" height="9" rx="2" fill="#FF6B35"/>
   <text x="52.00" y="128.00" class="name">HTML</text>
