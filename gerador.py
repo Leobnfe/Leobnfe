@@ -18,21 +18,39 @@ HEADERS = {
 if TOKEN:
     HEADERS["Authorization"] = f"Bearer {TOKEN}"
 
+# Paleta mais elegante/sóbria
 COLORS = {
-    "HTML": "#E34F26", "CSS": "#1572B6", "JavaScript": "#F7DF1E",
-    "Python": "#4CC38A", "TypeScript": "#A78BFA", "C": "#A8B9CC",
-    "C++": "#F34B7D", "C#": "#178600", "Java": "#B07219",
-    "Go": "#00ADD8", "Rust": "#DEA584", "PHP": "#4F5D95",
-    "Ruby": "#CC342D", "Kotlin": "#E879F9", "Swift": "#F05138",
-    "Dart": "#00B4AB", "Shell": "#89E051", "PowerShell": "#5391FE",
-    "SQL": "#E38C00", "Lua": "#000080", "R": "#198CE7",
-    "SCSS": "#C6538C", "Vue": "#41B883", "Svelte": "#FF3E00",
-    "Dockerfile": "#384D54", "Jupyter Notebook": "#DA5B0B",
+    "HTML": "#FF6B35",
+    "CSS": "#3B82F6",
+    "JavaScript": "#FACC15",
+    "Python": "#4ADE80",
+    "TypeScript": "#8B5CF6",
+    "C": "#94A3B8",
+    "C++": "#F472B6",
+    "C#": "#22C55E",
+    "Java": "#FB923C",
+    "Go": "#38BDF8",
+    "Rust": "#C08457",
+    "PHP": "#818CF8",
+    "Ruby": "#F43F5E",
+    "Kotlin": "#E879F9",
+    "Swift": "#F97316",
+    "Dart": "#06B6D4",
+    "Shell": "#84CC16",
+    "PowerShell": "#60A5FA",
+    "SQL": "#F59E0B",
+    "Lua": "#6366F1",
+    "R": "#0EA5E9",
+    "SCSS": "#EC4899",
+    "Vue": "#10B981",
+    "Svelte": "#F97316",
+    "Dockerfile": "#64748B",
+    "Jupyter Notebook": "#F97316",
+    "Batchfile": "#A3A300",
 }
 
 
 def obter_dados_linguagens():
-    
     if not TOKEN:
         raise RuntimeError("GH_TOKEN ausente. Confira o Secret no GitHub Actions.")
 
@@ -75,19 +93,20 @@ def obter_dados_linguagens():
             url = resposta.links.get("next", {}).get("url")
             params = None
 
-    print(f"Repositórios analisados de {USERNAME}: "
-          f"{publicos} públicos e {privados} privados (sem forks).")
+    print(
+        f"Repositórios analisados de {USERNAME}: "
+        f"{publicos} públicos e {privados} privados (sem forks)."
+    )
     return totais
 
 
 def cor_linguagem(nome):
-    
     if nome in COLORS:
         return COLORS[nome]
     digest = hashlib.sha256(nome.encode("utf-8")).digest()
     hue = int.from_bytes(digest[:2], "big") / 65535
-    saturation = 0.52 + (digest[2] / 255) * 0.25
-    value = 0.80 + (digest[3] / 255) * 0.17
+    saturation = 0.45 + (digest[2] / 255) * 0.20
+    value = 0.75 + (digest[3] / 255) * 0.15
     rgb = colorsys.hsv_to_rgb(hue, saturation, value)
     return "#" + "".join(f"{round(c * 255):02X}" for c in rgb)
 
@@ -101,7 +120,6 @@ def percentual_formatado(valor):
 
 
 def gerar_svg(linguagens, arquivo=OUTPUT):
-    
     itens = sorted(
         [(nome, qtd) for nome, qtd in linguagens.items() if isinstance(qtd, int) and qtd > 0],
         key=lambda item: (-item[1], item[0].casefold()),
@@ -111,52 +129,69 @@ def gerar_svg(linguagens, arquivo=OUTPUT):
 
     total = sum(qtd for _, qtd in itens)
     largura = 700
-    
+
     colunas = 3 if max(len(nome) for nome, _ in itens) <= 19 else 2
     linhas = math.ceil(len(itens) / colunas)
     largura_coluna = 636 / colunas
-    inicio_legenda = 122
-    passo = 26
-    altura = max(170, inicio_legenda + (linhas - 1) * passo + 26)
+    inicio_legenda = 128
+    passo = 28
+    altura = max(180, inicio_legenda + (linhas - 1) * passo + 30)
 
     partes = [f'''<svg xmlns="http://www.w3.org/2000/svg" width="{largura}" height="{altura}"
     viewBox="0 0 {largura} {altura}" role="img" aria-label="Estatísticas de linguagens do GitHub">
   <title>Distribuição de código por linguagem — {len(itens)} linguagens</title>
   <style>
-    .title {{ font: 600 17px 'Segoe UI', Arial, sans-serif; fill: #c0caf5; }}
-    .subtitle {{ font: 12px 'Segoe UI', Arial, sans-serif; fill: #a9b1d6; }}
-    .name {{ font: 12px 'Segoe UI', Arial, sans-serif; fill: #c0caf5; }}
-    .pct {{ font: 11px 'Segoe UI', Arial, sans-serif; fill: #a9b1d6; }}
+    .title {{ font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #ffffff; }}
+    .subtitle {{ font: 12px 'Segoe UI', Arial, sans-serif; fill: #a1a1aa; }}
+    .name {{ font: 12px 'Segoe UI', Arial, sans-serif; fill: #f4f4f5; }}
+    .pct {{ font: 11px 'Segoe UI', Arial, sans-serif; fill: #a1a1aa; }}
   </style>
-  <rect width="700" height="{altura}" rx="12" fill="#1a1b26"/>
-  <text x="32" y="35" class="title">Análise do Repositório</text>
-  <text x="32" y="55" class="subtitle">Percentual de código por linguagem · {len(itens)} linguagens</text>
-  <defs><clipPath id="barra-arredondada"><rect x="32" y="74" width="636" height="12" rx="6"/></clipPath></defs>
-  <rect x="32" y="74" width="636" height="12" rx="6" fill="#24283b"/>
+
+  <!-- Card -->
+  <rect x="10" y="10" width="680" height="{altura - 20}" rx="14" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Título -->
+  <text x="36" y="42" class="title">Análise do Repositório</text>
+  <text x="36" y="62" class="subtitle">Percentual de código por linguagem · {len(itens)} linguagens</text>
+
+  <!-- Barra de fundo -->
+  <defs>
+    <clipPath id="barra-arredondada">
+      <rect x="36" y="82" width="608" height="14" rx="7"/>
+    </clipPath>
+  </defs>
+  <rect x="36" y="82" width="608" height="14" rx="7" fill="#21262d"/>
   <g clip-path="url(#barra-arredondada)">''']
 
-    atual = 32.0
+    atual = 36.0
+    largura_barra = 608.0
+
     for idx, (nome, qtd) in enumerate(itens):
-        tamanho = 636 * qtd / total
+        tamanho = largura_barra * qtd / total
         if idx == len(itens) - 1:
-            tamanho = 668.0 - atual
-        partes.append(f'    <rect x="{atual:.5f}" y="74" width="{tamanho:.5f}" height="12" fill="{cor_linguagem(nome)}"/>')
+            tamanho = (36.0 + largura_barra) - atual
+        partes.append(
+            f'    <rect x="{atual:.5f}" y="82" width="{tamanho:.5f}" height="14" fill="{cor_linguagem(nome)}"/>'
+        )
         atual += tamanho
+
     partes.append("  </g>")
 
     for i, (nome, qtd) in enumerate(itens):
         coluna, linha = i % colunas, i // colunas
-        x = 32 + largura_coluna * coluna
+        x = 36 + largura_coluna * coluna
         y = inicio_legenda + passo * linha
         pct = qtd / total * 100
         nome_xml = escape(nome)
+
         partes.extend([
-            f'  <rect x="{x:.2f}" y="{y - 9:.2f}" width="8" height="8" rx="2" fill="{cor_linguagem(nome)}"/>',
+            f'  <rect x="{x:.2f}" y="{y - 10:.2f}" width="9" height="9" rx="2" fill="{cor_linguagem(nome)}"/>',
             f'  <text x="{x + 16:.2f}" y="{y:.2f}" class="name">{nome_xml}</text>',
-            f'  <text x="{x + largura_coluna - 10:.2f}" y="{y:.2f}" text-anchor="end" class="pct">{percentual_formatado(pct)}</text>',
+            f'  <text x="{x + largura_coluna - 12:.2f}" y="{y:.2f}" text-anchor="end" class="pct">{percentual_formatado(pct)}</text>',
         ])
 
     partes.append("</svg>")
+
     caminho = Path(arquivo)
     caminho.write_text("\n".join(partes), encoding="utf-8")
     print(f"Linguagens exibidas: {len(itens)} (todas). SVG: {largura}x{altura}px.")
