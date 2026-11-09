@@ -1,3 +1,4 @@
+
 import colorsys
 import hashlib
 import math
@@ -14,6 +15,9 @@ import requests
 USERNAME = "Leobnfe"
 TOKEN = os.getenv("GH_TOKEN")
 OUTPUT = Path("estatisticas.svg")
+
+# Linguagens que não serão exibidas nas estatísticas
+EXCLUDED_LANGUAGES = {"Batchfile", "Portugol"}
 
 HEADERS = {
     "Accept": "application/vnd.github+json",
@@ -117,6 +121,11 @@ def obter_dados_linguagens():
                     publicos += 1
 
                 for linguagem, bytes_codigo in linguagens_repo.items():
+
+                    # Ignorar linguagens selecionadas
+                    if linguagem in EXCLUDED_LANGUAGES:
+                        continue
+
                     if isinstance(bytes_codigo, int) and bytes_codigo > 0:
                         totais[linguagem] = totais.get(linguagem, 0) + bytes_codigo
 
@@ -315,7 +324,7 @@ def gerar_svg(linguagens, arquivo=OUTPUT):
 
     partes.append("  </g>")
 
-    # Legenda com TODAS as linguagens
+    # Legenda com TODAS as linguagens permitidas
     for i, (nome, qtd) in enumerate(itens):
         coluna = i % colunas
         linha = i // colunas
