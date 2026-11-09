@@ -5,7 +5,7 @@
     role="img"
     aria-label="Estatísticas de linguagens do GitHub">
 
-  <title>Distribuição de código por linguagem — 5 linguagens</title>
+  <title>Distribuição de código por linguagem — 6 linguagens</title>
 
   <style>
     .title {
@@ -48,7 +48,7 @@
 
   <!-- Subtítulo -->
   <text x="36" y="62" class="subtitle">
-    Percentual de código por linguagem · 5 linguagens
+    Percentual de código por linguagem · 6 linguagens
   </text>
 
   <!-- Clip da barra -->
@@ -75,25 +75,29 @@
   />
 
   <g clip-path="url(#barra-arredondada)">
-  <rect x="36.00000" y="82" width="241.78282" height="14" fill="#FF6B35"/>
-  <rect x="277.78282" y="82" width="168.18471" height="14" fill="#4ADE80"/>
-  <rect x="445.96753" y="82" width="152.08390" height="14" fill="#3B82F6"/>
-  <rect x="598.05143" y="82" width="60.62698" height="14" fill="#FACC15"/>
-  <rect x="658.67841" y="82" width="1.32159" height="14" fill="#A3A300"/>
+  <rect x="36.00000" y="82" width="241.55791" height="14" fill="#FF6B35"/>
+  <rect x="277.55791" y="82" width="168.02826" height="14" fill="#4ADE80"/>
+  <rect x="445.58617" y="82" width="151.94242" height="14" fill="#3B82F6"/>
+  <rect x="597.52859" y="82" width="60.57058" height="14" fill="#FACC15"/>
+  <rect x="658.09917" y="82" width="1.32036" height="14" fill="#A3A300"/>
+  <rect x="659.41954" y="82" width="0.58046" height="14" fill="#58CAA0"/>
   </g>
   <rect x="36.00" y="118.00" width="9" height="9" rx="2" fill="#FF6B35"/>
   <text x="52.00" y="128.00" class="name">HTML</text>
   <text x="236.00" y="128.00" text-anchor="end" class="pct">38.7%</text>
   <rect x="248.00" y="118.00" width="9" height="9" rx="2" fill="#4ADE80"/>
   <text x="264.00" y="128.00" class="name">Python</text>
-  <text x="448.00" y="128.00" text-anchor="end" class="pct">27.0%</text>
+  <text x="448.00" y="128.00" text-anchor="end" class="pct">26.9%</text>
   <rect x="460.00" y="118.00" width="9" height="9" rx="2" fill="#3B82F6"/>
   <text x="476.00" y="128.00" class="name">CSS</text>
-  <text x="660.00" y="128.00" text-anchor="end" class="pct">24.4%</text>
+  <text x="660.00" y="128.00" text-anchor="end" class="pct">24.3%</text>
   <rect x="36.00" y="146.00" width="9" height="9" rx="2" fill="#FACC15"/>
   <text x="52.00" y="156.00" class="name">JavaScript</text>
   <text x="236.00" y="156.00" text-anchor="end" class="pct">9.7%</text>
   <rect x="248.00" y="146.00" width="9" height="9" rx="2" fill="#A3A300"/>
   <text x="264.00" y="156.00" class="name">Batchfile</text>
   <text x="448.00" y="156.00" text-anchor="end" class="pct">0.21%</text>
+  <rect x="460.00" y="146.00" width="9" height="9" rx="2" fill="#58CAA0"/>
+  <text x="476.00" y="156.00" class="name">Portugol</text>
+  <text x="660.00" y="156.00" text-anchor="end" class="pct">0.09%</text>
 </svg>
